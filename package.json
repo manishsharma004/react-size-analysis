@@ -26,6 +26,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "postbuild": "tar -zcf react-size-analysis.tgz -X exclude-jsmap.txt build/",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
