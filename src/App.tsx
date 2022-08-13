@@ -2,7 +2,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Link, Outlet, Route, Routes } from 'react-router-dom'
 import Home from './routes/home';
 import store from './store/store';
-import './App.css';
 
 function Index() {
   return (
