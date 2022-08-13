@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Link, Outlet, Route, Routes } from 'react-router-dom'
+import Home from './routes/home';
+import store from './store/store';
 import './App.css';
+
+function Index() {
+  return (
+    <div className="App">
+      <div>
+        <Link to="/home" >Home</Link> | {" "}
+        <Link to="/home1" >Home 1</Link>
+      </div>
+      <Outlet />
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Index />}>
+            <Route path='home' element={<Home text="Home" />} />
+            <Route path='home1' element={<Home text="My Home" />} />
+          </Route>
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 
